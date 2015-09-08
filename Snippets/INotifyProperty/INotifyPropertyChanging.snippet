@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>INotifyPropertyChanging</Title>
+      <Author>Jason Boyd</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_INotifyPropertyChanging</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>protected</ID>
+          <ToolTip>protected</ToolTip>
+          <Default>protected</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[#region INotifyPropertyChanging Implementation
+
+/// <summary>
+/// Occurs when a property's value is changing.
+/// </summary>
+public event PropertyChangingEventHandler PropertyChanging;
+
+/// <summary>
+/// Raises <see cref="PropertyChanging"/> if any event listeners are attached.
+/// </summary>
+/// <param name="propertyName">The name of the property that is changing.</param>
+$protected$ void RaisePropertyChanging(string propertyName)
+{
+    // Check if any event listeners are attached and raise 'PropertyChanging' if there are.
+    if (this.PropertyChanging != null)
+        this.PropertyChanging.Invoke(this, new PropertyChangingEventArgs(propertyName));
+}
+
+#endregion]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

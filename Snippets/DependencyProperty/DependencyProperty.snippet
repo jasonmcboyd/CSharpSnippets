@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Keywords />
+      <Title>Dependency Property</Title>
+      <Author>Jason Boyd</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_DependencyProperty</Shortcut>
+    </Header>
+    <Snippet>
+      <References />
+      <Imports />
+      <Declarations>
+        <Literal Editable="true">
+          <ID>PropertyName</ID>
+          <ToolTip>Property name</ToolTip>
+          <Default>PropertyName</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Object Editable="true">
+          <ID>PropertyType</ID>
+          <ToolTip>Property type</ToolTip>
+          <Default>string</Default>
+          <Function>
+          </Function>
+          <Type>System.Type</Type>
+        </Object>
+        <Object Editable="true">
+          <ID>OwnerType</ID>
+          <ToolTip>Owner type</ToolTip>
+          <Default>
+          </Default>
+          <Function>
+          </Function>
+          <Type>System.Type</Type>
+        </Object>
+      </Declarations>
+      <Code Language="csharp" Kind="" Delimiter="$"><![CDATA[public $PropertyType$ $PropertyName$
+        {
+            get { return ($PropertyType$)GetValue($PropertyName$Property); }
+            set { SetValue($PropertyName$Property, value); }
+        }
+        public static readonly DependencyProperty $PropertyName$Property = DependencyProperty.Register(
+            "$PropertyName$",
+            typeof($PropertyType$),
+            typeof($OwnerType$),
+            new PropertyMetadata($PropertyName$ChangedCallback));
+        private static void $PropertyName$ChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            $OwnerType$ source = ($OwnerType$)obj;
+        }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>INotifyPropertyChanged</Title>
+      <Author>Jason Boyd</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_INotifyPropertyChanged</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>protected</ID>
+          <ToolTip>protected</ToolTip>
+          <Default>protected</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[#region INotifyPropertyChanged Implementation
+
+        /// <summary>
+        /// Occurs when a property's value changes.
+        /// 
+        /// The <see cref="PropertyChangedEventArgs"/> parameter can indicate all 
+        /// properties on the object have changed by using either null or String.Empty as the 
+        /// property name in the PropertyChangedEventArgs.
+        /// Source: https://msdn.microsoft.com/en-us/library/system.componentmodel.propertychangedeventargs.propertyname.aspx
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Raises the <see cref="INotifyPropertyChanged.PropertyChanged"/> event if any event 
+        /// listeners are attached.
+        /// 
+        /// The <see cref="INotifyPropertyChanged.PropertyChanged"/> event can indicate all 
+        /// properties on the object have changed by using either null or String.Empty as the 
+        /// property name in the PropertyChangedEventArgs.
+        /// Source: http://msdn.microsoft.com/en-us/library/system.componentmodel.inotifypropertychanged.propertychanged.aspx
+        /// </summary>
+        /// <param name="propertyName">The name of the property that changed.</param>
+        $protected$ void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            // Check if any event listeners are attached and raise 'PropertyChanged' if there are.
+			PropertyChangedEventHandler handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
