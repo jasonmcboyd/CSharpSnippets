@@ -6,13 +6,13 @@
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
       <Keywords />
-      <Title>Dependency Property</Title>
+      <Title>Dependency Property (With Callback)</Title>
       <Author>Jason Boyd</Author>
       <Description>
       </Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>_DependencyProperty</Shortcut>
+      <Shortcut>_DependencyProperty_WithCallback</Shortcut>
     </Header>
     <Snippet>
       <References />
@@ -51,7 +51,12 @@
         public static readonly DependencyProperty $PropertyName$Property = DependencyProperty.Register(
             "$PropertyName$",
             typeof($PropertyType$),
-            typeof($OwnerType$));
+            typeof($OwnerType$),
+            new PropertyMetadata($PropertyName$ChangedCallback));
+        private static void $PropertyName$ChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            $OwnerType$ source = ($OwnerType$)obj;
+        }
 ]]></Code>
     </Snippet>
   </CodeSnippet>
