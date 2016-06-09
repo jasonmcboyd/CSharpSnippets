@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>DataMemberProperty</Title>
+      <Author>Jason</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>_DataMemberProperty</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>PropertyName</ID>
+          <ToolTip>Property name</ToolTip>
+          <Default>PropertyName</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>PropertyType</ID>
+          <ToolTip>Property type</ToolTip>
+          <Default>string</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Alias</ID>
+          <ToolTip>XML Alias</ToolTip>
+          <Default>alias</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[[DataMember(Name = "$Alias$")]
+        public $PropertyType$ $PropertyName$ { get; set; }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
